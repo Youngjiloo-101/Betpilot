@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Glow effect filters -->
+  <defs>
+    <filter id="outerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="25" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="innerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#50E6FF" />
+      <stop offset="50%" stop-color="#1AA7FF" />
+      <stop offset="100%" stop-color="#0078D4" />
+    </linearGradient>
+    <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#80F0FF" />
+      <stop offset="100%" stop-color="#50E6FF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background glow -->
+  <ellipse cx="256" cy="256" rx="160" ry="160" fill="#0078D4" opacity="0.2" filter="url(#outerGlow)" />
+  
+  <!-- Main flame shape with 3D effect -->
+  <g filter="url(#innerGlow)">
+    <!-- Main flame body -->
+    <path d="M256 96c0 0-96 96-96 192s64 128 96 128 96-32 96-128-96-192-96-192z" 
+          fill="url(#blueGradient)" 
+          stroke="#50E6FF" 
+          stroke-width="8"
+          stroke-opacity="0.8" />
+          
+    <!-- Inner flame detail for 3D effect -->
+    <path d="M256 144c0 0-64 72-64 144s48 80 64 80 64-16 64-80-64-144-64-144z" 
+          fill="#50E6FF" 
+          opacity="0.7" />
+          
+    <!-- Highlight for 3D effect -->
+    <path d="M216 288c0 0 24-48 40-48s40 48 40 48c0 32-16 48-40 48s-40-16-40-48z"
+          fill="url(#highlightGradient)"
+          opacity="0.5" />
+  </g>
+</svg>

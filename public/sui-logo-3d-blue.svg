@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Glow effect filter -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#50E6FF" />
+      <stop offset="100%" stop-color="#0078D4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main flame shape -->
+  <path d="M256 96c0 0-96 96-96 192s64 128 96 128 96-32 96-128-96-192-96-192z" 
+        fill="url(#blueGradient)" 
+        filter="url(#glow)" 
+        stroke="#50E6FF" 
+        stroke-width="12"
+        stroke-opacity="0.8" />
+        
+  <!-- Inner flame detail -->
+  <path d="M256 144c0 0-64 72-64 144s48 80 64 80 64-16 64-80-64-144-64-144z" 
+        fill="#50E6FF" 
+        opacity="0.6" />
+</svg>
