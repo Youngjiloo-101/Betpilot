@@ -376,7 +376,7 @@ export default function BetPlannerPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-700">
-                      {category.options.map((bet) => (
+                      {category.options.map((bet: { id: string; event: string; market: string; selection: string; odds: number; probability: number; stake: number; potentialReturn: number; roi: number; expectedReturn: number }) => (
                         <tr key={bet.id} className="hover:bg-primary-700/30">
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
                             {bet.event}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { CheckCircleIcon, XCircleIcon, StarIcon, UserGroupIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/solid'
-import { AnimatedCard, StaggeredContainer, StaggeredItem, GlowEffect } from './AnimatedSection'
+import { AnimatedCard, StaggeredContainer, StaggeredItem } from './AnimatedSection'
 import GlowingText from './GlowingText'
 
 // Mock data for daily selections

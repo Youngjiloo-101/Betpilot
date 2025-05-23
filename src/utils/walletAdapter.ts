@@ -5,9 +5,11 @@ import {
 } from '@mysten/sui.js/client';
 import { 
   WalletAccount, 
-  WalletAdapterList, 
   getWallets 
 } from '@mysten/wallet-standard';
+
+// Define WalletAdapterList type locally since it's not exported from the package
+type WalletAdapterList = ReturnType<typeof getWallets>;
 import { 
   TransactionBlock 
 } from '@mysten/sui.js/transactions';
@@ -51,7 +53,7 @@ export function createWalletAdapter(wallet: any): WalletAdapter {
         this.connecting = true;
         
         // Check if wallet has standard connect feature
-        if (wallet.features['standard:connect']) {
+        if (wallet.features['standard:connect'] !== undefined && wallet.features['standard:connect'] !== null) {
           await wallet.features['standard:connect'].connect();
         }
         
@@ -76,7 +78,7 @@ export function createWalletAdapter(wallet: any): WalletAdapter {
     // Disconnect from wallet
     async disconnect(): Promise<void> {
       try {
-        if (wallet.features['standard:disconnect']) {
+        if (wallet.features['standard:disconnect'] !== undefined && wallet.features['standard:disconnect'] !== null) {
           await wallet.features['standard:disconnect'].disconnect();
         }
         
@@ -99,7 +101,7 @@ export function createWalletAdapter(wallet: any): WalletAdapter {
 
       try {
         // Check if wallet supports signTransactionBlock
-        if (!wallet.features['sui:signTransactionBlock']) {
+        if (wallet.features['sui:signTransactionBlock'] === undefined || wallet.features['sui:signTransactionBlock'] === null) {
           throw new Error('Wallet does not support transaction signing');
         }
 
@@ -169,8 +171,8 @@ export function getAvailableWallets(): WalletAdapter[] {
           hasSignTx: !!wallet.features['sui:signTransactionBlock']
         });
         
-        return wallet.features['standard:connect'] && 
-               wallet.features['standard:getAccounts'];
+        return !!wallet.features['standard:connect'] && 
+               !!wallet.features['standard:getAccounts'];
       })
       .map(wallet => createWalletAdapter(wallet));
     
@@ -459,7 +461,7 @@ function getFallbackWallets(): WalletAdapter[] {
 
 // Check if a wallet address is valid
 export const isValidSuiAddress = (address: string): boolean => {
-  return address && address.startsWith('0x') && address.length >= 42;
+  return !!address && address.startsWith('0x') && address.length >= 42;
 };
 
 // Get wallet balance
