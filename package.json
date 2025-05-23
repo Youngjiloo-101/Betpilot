@@ -11,8 +11,10 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@mysten/dapp-kit": "^0.16.5",
     "@mysten/sui.js": "^0.54.1",
     "@mysten/wallet-standard": "^0.14.9",
+    "@tanstack/react-query": "^5.76.2",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.0",
     "chart.js": "^4.4.0",
